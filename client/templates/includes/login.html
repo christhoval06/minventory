@@ -1,0 +1,194 @@
+<template name="logoutForm">
+    <form id="logout-form">
+        {{currentUser.profile.fullname}}
+        <button class="btn btn-danger" type="submit">
+            <span class="glyphicon glyphicon-off"></span> Log Out
+        </button>
+    </form>
+</template>
+
+
+<template name="accountManager">
+    <div class="fluid-container account-manager">
+        <div class="row">
+            <div class="col-md-offset-3 col-md-6 col-lg-offset-3 col-lg-6">
+                <div class="form-container {{#if isSignUp}} signup {{else}} signin {{/if}}">
+                    {{> loginForm}}
+                </div>
+            </div>
+        </div>
+    </div>
+</template>
+
+<template name="loginForm">
+    {{#if isSignUp}}
+        {{> signupForm}}
+    {{else}}
+        {{#if forgotPassword}}
+            {{> recovery}}
+        {{else}}
+            <form id="login-form">
+                <h2 class="title text-center">Sign In</h2>
+
+                <div class="form-group">
+                    <label class="sr-only" for="login-username">Username</label>
+
+                    <div class="input-group">
+                        <div class="input-group-addon icono-container">
+                            <span class="glyphicon glyphicon-user icono"></span>
+                        </div>
+                        <input type="text" id="login-username" class="form-control input" placeholder="Username" autocomplete="false"/>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label class="sr-only" for="login-password">Password</label>
+
+                    <div class="input-group">
+                        <div class="input-group-addon icono-container">
+                            <span class="glyphicon glyphicon-lock icono"></span>
+                        </div>
+                        <input type="password" id="login-password" class="form-control input" placeholder="Password" autocomplete="false"/>
+                    </div>
+                </div>
+
+                <button class="btn btn-primary btn-block" type="submit">Sign In</button>
+
+                <div class="form-group">
+                    <p class="text-center forgot-password"><a href="#" id="forgot-password">Forgot your password?</a></p>
+                </div>
+
+                <div class="form-group">
+                    <div class="create-acount">
+                        <span>Don't have an account</span>
+                <span class="pull-right">
+                    <button id="create-acount" class="btn btn-default btn-sm" type="button">Sign Up</button>
+                </span>
+                    </div>
+                </div>
+            </form>
+        {{/if}}
+    {{/if}}
+</template>
+
+<template name="signupForm">
+    <form id="signup-form">
+        <h2 class="title text-center">Sign Up</h2>
+
+        <div class="form-group">
+            <label class="sr-only" for="signup-username">Username</label>
+
+            <div class="input-group">
+                <div class="input-group-addon icono-container">
+                    <span class="glyphicon glyphicon-user icono"></span>
+                </div>
+                <input type="text" id="signup-username" class="form-control input" placeholder="Username" autocomplete="false"/>
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="sr-only" for="signup-email">Email</label>
+
+            <div class="input-group">
+                <div class="input-group-addon icono-container">
+                    <span class="icono">@</span>
+                </div>
+                <input type="email" id="signup-email" class="form-control input" placeholder="Email"/>
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="sr-only" for="signup-password">Password</label>
+
+            <div class="input-group">
+                <div class="input-group-addon icono-container">
+                    <span class="glyphicon glyphicon-lock icono"></span>
+                </div>
+                <input type="password" id="signup-password" class="form-control input" placeholder="Password"/>
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="sr-only" for="signup-name">Name</label>
+
+            <div class="input-group">
+                <div class="input-group-addon icono-container">
+                    <span class="glyphicon glyphicon-user icono"></span>
+                </div>
+                <input type="text" id="signup-name" class="form-control input" placeholder="Full Name"/>
+            </div>
+        </div>
+
+        <button class="btn btn-primary btn-block" type="submit">Sign Up</button>
+
+        <div class="form-group">
+            <p class="text-center forgot-password"></p>
+        </div>
+
+        <div class="form-group">
+            <div class="go-signin">
+                <span>Have an account</span>
+                <span class="pull-right">
+                    <button id="go-signin" class="btn btn-default btn-sm" type="button">Sign In</button>
+                </span>
+            </div>
+        </div>
+    </form>
+</template>
+
+<template name="recovery">
+    {{#if resetPassword}}
+        <form id="new-password-form">
+            <h2 class="title text-center">Forgot Password</h2>
+
+            <div class="form-group">
+                <label class="sr-only" for="new-password-form-password">New Password</label>
+
+                <div class="input-group">
+                    <div class="input-group-addon icono-container">
+                        <span class="glyphicon glyphicon-lock icono"></span>
+                    </div>
+                    <input type="password" id="new-password-form-password" class="form-control input" placeholder="New Password"/>
+                </div>
+            </div>
+            <button class="btn btn-primary btn-block" type="submit">Change Password</button>
+            <div class="form-group">
+                <p class="text-center forgot-password"></p>
+            </div>
+
+            <div class="form-group">
+                <div class="go-signin">
+                    <span>Remember my password</span>
+                <span class="pull-right">
+                    <button id="go-signin" class="btn btn-default btn-sm" type="button">Cancel</button>
+                </span>
+                </div>
+            </div>
+        </form>
+    {{else}}
+        <form id="recovery-form">
+            <h2 class="title text-center">Password Reset</h2>
+
+            <div class="form-group">
+                <label class="sr-only" for="recovery-email">Email</label>
+
+                <div class="input-group">
+                    <div class="input-group-addon icono-container">
+                        <span class="icono">@</span>
+                    </div>
+                    <input type="email" id="recovery-email" class="form-control input" placeholder="Recovery Email"/>
+                </div>
+            </div>
+            <button class="btn btn-primary btn-block" type="submit">Send Reset Instructions</button>
+            <div class="form-group">
+                <p class="text-center forgot-password"></p>
+            </div>
+
+            <div class="form-group">
+                <div class="go-signin">
+                    <span>Remember my password</span>
+                <span class="pull-right">
+                    <button id="go-signin" class="btn btn-default btn-sm" type="button">Cancel</button>
+                </span>
+                </div>
+            </div>
+        </form>
+    {{/if}}
+</template>

@@ -1,0 +1,1 @@
+process.env.MAIL_URL="smtp://afonseca.org:NO1password@smtp.gmail.com:465";
