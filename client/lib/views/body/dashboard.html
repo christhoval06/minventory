@@ -1,0 +1,19 @@
+<template name="dashboard">
+    <div class="dashboard">
+        <div class="row">
+            {{#each getFastAccess}}
+                <div class="col-lg-3">
+                    <a class="fast-access">
+                        <div class="panel panel-default {{color}}">
+                            <div class="panel-body">
+                                <span class="btn-icon {{icon}}"></span>
+
+                                <h3>{{text}}</h3>
+                            </div>
+                        </div>
+                    </a>
+                </div>
+            {{/each}}
+        </div>
+    </div>
+</template>

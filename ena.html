@@ -1,0 +1,108 @@
+<div class="smicon-component wpb_animate_when_almost_visible wpb_appear animate-element wpb_start_animation">
+    <div class="icono">
+
+        <a id="toconsultaSaldo" class="smicon-box-link to-consultar-saldo" href="javascript:void(0);" onclick="cambiarDeA(this, '#consultaSaldo');">
+            <div class="icono-link">
+                <div class="smicon-box  icon-default icon-circle-solid">
+                    <div class="smicon-icon">
+                        <i class=" smicon-box-icon fa fa-check " style=" color:#00a0df; font-size:100px; width:100px; height:100px; border:  1px  solid #3276b1; background: #ffffff; padding: 5px;"></i>
+                    </div>
+                    <div class="smicon-header">
+                        <h3 class="smicon-title">Consultar Saldo</h3>
+                    </div>
+                    <div class="smicon-description">
+                        Revisa el estado de tu saldo aquí
+                        <br>
+                        Solo para usuarios de Panapass
+                    </div>
+                </div>
+            </div>
+        </a>
+
+        <div id="consultaSaldo" class="box" style="display: none;">
+
+            <div class="box-header">
+                <h3 class="box-title text-center">Consultar Saldo</h3>
+            </div>
+            <div class="box-description">
+                <form>
+                    <div class="form-group">
+                        <input type="number" id="numPanapass" class="form-control" placeholder="Número de PANAPASS">
+                    </div>
+                    <p class="text-center form-instructions">digite su número de panapass y presione el boton</p>
+
+                    <div class="btn-group">
+                        <button type="button" class="btn btn-primary" onclick="clic_consultar(this);"><i class="fa fa-search"></i> Consultar</button>
+                        <button type="button" class="btn btn-danger" onclick="cambiarDeA('#consultaSaldo', '#toconsultaSaldo');"><i class="fa fa-times"></i> Cancelar</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+
+        <div id="resultadoConsultaSaldo" class="box" style="display: none;">
+
+            <div class="box-header">
+                <h3 id="ConsultaSaldoNombre" class="box-title text-center"></h3>
+            </div>
+            <div class="box-description">
+
+
+                <div class="row box-information" style="display: none;">
+                    <div class="col-md-5 text-right">Panapass</div>
+                    <div class="col-md-7" id="ConsultaSaldoPanapass"></div>
+
+
+                    <div class="col-md-5 text-right">Saldo</div>
+                    <div class="col-md-7" id="ConsultaSaldoSaldo"></div>
+                </div>
+
+                <p class="error text-center"></p>
+
+                <button type="button" class="btn btn-primary btn-block" onclick="cambiarDeA('#resultadoConsultaSaldo', '#consultaSaldo');"> Listo</button>
+            </div>
+        </div>
+
+    </div>
+</div>
+
+<script type="text/javascript">
+
+    function cambiarDeA(aqui, alla){
+        jQuery(aqui).hide('fast', function () {
+            jQuery(alla).show('fast');
+        });
+    }
+
+    function clic_consultar(me) {
+        var $_self = jQuery(me),
+                $_vista = jQuery('#resultadoConsultaSaldo');
+
+        $_vista.find('.box-information').hide();
+        $_vista.find('#ConsultaSaldoNombre').html('');
+        $_vista.find('#ConsultaSaldoPanapass').html('');
+        $_vista.find('#ConsultaSaldoSaldo').html('');
+        $_vista.find('.error').html('');
+
+        $_self.find('i').removeClass().addClass('fa fa-cog fa-spin');
+        var jqxhr = jQuery.get('http://enacorredores.com/api/', {fnt: 'info', panapass: jQuery('#numPanapass').val()}, function () {
+            $_self.find('i').removeClass().addClass('fa fa-search');
+            $_vista.find('.box-information').hide('fast');
+        }, 'json').done(function (data) {
+            console.log(data);
+            if(data.success) {
+                $_vista.find('.box-information').show('fast');
+                $_vista.find('#ConsultaSaldoNombre').html(data.nombre);
+                $_vista.find('#ConsultaSaldoPanapass').html(data.panapass);
+                $_vista.find('#ConsultaSaldoSaldo').html(data.saldo);
+            }else{
+                $_vista.find('#ConsultaSaldoNombre').html('Error');
+                $_vista.find('.error').html(data.message);
+            }
+            cambiarDeA('#consultaSaldo', '#resultadoConsultaSaldo');
+        }).fail(function (e) {
+            console.log(e);
+        }).always(function () {
+            console.log("finished");
+        });
+    }
+</script>
