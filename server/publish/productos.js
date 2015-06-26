@@ -3,7 +3,7 @@
  */
 
 
-/*PUBLISH CATEGORIAS*/
-Meteor.publish("productos", function (options) {
-    return Categorias.find({}, options);
+/*PUBLISH PRODUCTOS*/
+Meteor.publish("productos", function (filter, options) {
+    return Productos.find(filter, options);
 });

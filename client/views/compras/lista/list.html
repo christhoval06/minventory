@@ -1,0 +1,61 @@
+<template name="comprasList">
+    <section class="Productos">
+        <ol class="breadcrumb">
+            <li>
+                <a href="/">Inicio</a>
+            </li>
+            <li>
+                <a href="/compras">Compras</a>
+            </li>
+            <li class="active">Lista</li>
+        </ol>
+        <div class="jumbotron">
+            <div class="container">
+                <h2 class="title text-center">Productos</h2>
+                <table class="table table-hover  table-condensed table-striped">
+                    <thead>
+                    <tr>
+                        <th>Nombre</th>
+                        <th>Categoria</th>
+                        <th>Status</th>
+                        <th></th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    {{#each getProductos}}
+                        <tr>
+                            <td>
+                                <div>{{name}}</div>
+
+                                <div>
+                                    <small>Cantidad: {{cantidad}}</small>
+                                </div>
+                            </td>
+                            <td>{{categoria.name}}</td>
+                            <td>
+                                <button class="btn {{#if active}} btn-success {{else}} btn-danger {{/if}} btn-active">{{#if active}} Activo {{else}} Inactivo {{/if}}</button>
+                            </td>
+                            <td>
+                                <div class="btn-group">
+                                    <a class="btn btn-success green productos-edit"><span class="fa fa-pencil"></span></a>
+                                    <a class="btn btn-danger red productos-delete"><span class="fa fa-trash-o"></span></a>
+                                </div>
+                            </td>
+                        </tr>
+                    {{/each}}
+                    </tbody>
+                </table>
+                <ul class="pagination">
+                    <li class="{{#if previous }}disabled{{/if}}"><a class="producto-previous" href="#"><span class="fa fa-chevron-left"></span></a></li>
+                    {{#each getPagination}}
+                        <li class="{{#if active}}active{{/if}}"><a class="producto-pager" href="#">{{label}}</a></li>
+                    {{/each}}
+                    <li class="{{#if next }}disabled{{/if}}"><a class="producto-next" href="#"><span class="fa fa-chevron-right"></span></a></li>
+                </ul>
+            </div>
+        </div>
+    </section>
+</template>
+
+
+

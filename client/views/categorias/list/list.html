@@ -1,0 +1,51 @@
+<template name="categoriasList">
+    <ol class="breadcrumb">
+        <li>
+            <a href="/">inicio</a>
+        </li>
+        <li class="active">categorias</li>
+    </ol>
+    <section class="categorias">
+        <div class="jumbotron">
+            <div class="container">
+                <h2 class="title text-center">Categorias</h2>
+                <article class="pull-right">
+                    <a href="/categoria" class="btn btn-info"><span class="glyphicon glyphicon-plus"></span></a>
+                </article>
+                <table class="table table-hover table-condensed table-striped">
+                    <thead>
+                    <tr>
+                        <th>Categoria</th>
+                        <th>Status</th>
+                        <th class="opciones"></th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    {{#each getCategorias}}
+                        <tr>
+                            <td class="categoria-cell">{{name}}</td>
+                            <td>
+                                <button class="btn {{#if active}} btn-success {{else}} btn-danger {{/if}} btn-active">{{#if active}} Activa {{else}} Inactiva {{/if}}</button>
+                            </td>
+                            <td class="opciones">
+                                <a class="btn btn-danger red categorias-delete"><span class="fa fa-trash-o"></span></a>
+                            </td>
+                        </tr>
+                    {{/each}}
+                    </tbody>
+                </table>
+                <ul class="pagination">
+                    <li class="{{#if previous }}disabled{{/if}}"><a class="categoria-previous" href="#"><span class="fa fa-chevron-left"></span></a></li>
+                    {{#each getPagination}}
+                        <li class="{{#if active}}active{{/if}}"><a class="categoria-pager" href="#">{{label}}</a></li>
+                    {{/each}}
+                    <li class="{{#if next }}disabled{{/if}}"><a class="categoria-next" href="#"><span class="fa fa-chevron-right"></span></a></li>
+                </ul>
+
+            </div>
+        </div>
+    </section>
+</template>
+
+
+
