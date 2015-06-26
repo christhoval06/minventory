@@ -17,3 +17,6 @@ ian:bootstrap-3
 email
 fortawesome:fontawesome
 chhib:selectize-bootstrap-3
+dburles:collection-helpers
+jquery
+mizzao:bootboxjs

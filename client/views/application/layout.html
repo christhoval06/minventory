@@ -1,0 +1,14 @@
+<template name="layout">
+    {{#if currentUser}}
+        {{>header}}
+        <section>
+            <div class="container">
+                <div class="app">
+                    {{> yield}}
+                </div>
+            </div>
+        </section>
+    {{else}}
+        {{> accountManager}}
+    {{/if}}
+</template>

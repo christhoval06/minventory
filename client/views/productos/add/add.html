@@ -1,0 +1,135 @@
+<template name="addProducto">
+    <ol class="breadcrumb">
+        <li>
+            <a href="/">Inicio</a>
+        </li>
+        <li>
+            <a href="/productos">Productos</a>
+        </li>
+        <li class="active">{{getPage}}</li>
+    </ol>
+    <div class="row">
+        <div class="col-lg-5">
+            <div class="jumbotron">
+                <div class="container">
+                    {{>recientesProductos}}
+                </div>
+            </div>
+        </div>
+        <div class="col-lg-7">
+            <div class="jumbotron">
+                <div class="container">
+                    {{#with productoSeleccionado}}
+                        <form id="producto-add-form" class="form-horizontal">
+                            <fieldset>
+                                <h2 class="title text-center">{{getTitle}}</h2>
+
+                                <input type="hidden" id="producto-add-form-id" class="id" value="{{_id}}">
+
+                                <div class="form-group">
+                                    <label for="producto-add-form-name" class="col-sm-2 control-label ">Nombre</label>
+
+                                    <div class="col-sm-10">
+                                        <input type="text" id="producto-add-form-name" class="form-control input name" placeholder="Nombre" value="{{name}}"/>
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label for="producto-add-form-description" class="col-sm-2 control-label">Descripción</label>
+
+                                    <div class="col-sm-10">
+                                        <textarea id="producto-add-form-description" rows="4" class="form-control input description" placeholder="Descripción">{{description}}</textarea>
+                                    </div>
+                                </div>
+
+                                <div class="form-group">
+                                    <label for="producto-add-form-categoriaId" class="col-sm-2 control-label">Categoria</label>
+
+                                    <div class="col-sm-10">
+                                        <select id="producto-add-form-categoriaId" class="form-control input select2 categoriaId" placeholder="Seleccione una Categoria">
+                                            <optgroup label="Categorias">
+                                                {{#each getActiveCategorias}}
+                                                    <option selected="{{selectedCategoria _id}}" value="{{_id}}">{{name}}</option>
+                                                {{/each}}
+                                            </optgroup>
+                                        </select>
+                                    </div>
+                                </div>
+
+                                <div class="form-group">
+                                    <label for="producto-add-form-precio" class="col-sm-2 control-label">Precio</label>
+
+                                    <div class="col-sm-10">
+                                        <input type="number" id="producto-add-form-precio" class="form-control input precio" placeholder="Precio sugerido" value="{{precio}}" step="0.01" min="0"/>
+                                    </div>
+                                </div>
+
+                                <div class="form-group">
+                                    <label for="producto-add-form-cantidad" class="col-sm-2 control-label">Cantidad</label>
+
+                                    <div class="col-sm-10">
+                                        <input type="number" id="producto-add-form-cantidad" class="form-control input cantidad" placeholder="Cantidad" value="{{cantidad}}" min="0"/>
+                                    </div>
+                                </div>
+
+                                <div class="form-group">
+                                    <label for="producto-add-form-vendido" class="col-sm-2 control-label">Vendidos</label>
+
+                                    <div class="col-sm-10">
+                                        <input type="number" id="producto-add-form-vendido" class="form-control input vendido" placeholder="Productos Vendidos" value="{{vendidos}}" min="0"/>
+                                    </div>
+                                </div>
+
+                                <div class="form-group">
+                                    <label for="producto-add-form-comprado" class="col-sm-2 control-label">Comprados</label>
+
+                                    <div class="col-sm-10">
+                                        <input type="number" id="producto-add-form-comprado" class="form-control input comprado" placeholder="Productos Comprados" value="{{comprados}}" min="0"/>
+                                    </div>
+                                </div>
+
+                                <div class="form-group">
+                                    <div class="col-sm-offset-2 col-sm-10">
+                                        <div class="checkbox">
+                                            <label>
+                                                <input type="checkbox" id="producto-add-form-active" class="active" checked={{active}}> Activo?
+                                            </label>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <div class="col-sm-offset-2 col-sm-10">
+                                        {{>productosFormButtons}}
+                                    </div>
+                                </div>
+                            </fieldset>
+                        </form>
+                    {{/with}}
+                </div>
+            </div>
+        </div>
+    </div>
+</template>
+
+<template name="productosFormButtons">
+    {{#if isProductoSeleccionado}}
+        <div class="btn-group">
+            <button type="submit" class="btn boton btn-success green">Guardar Producto</button>
+            <button type="button" class="btn boton btn-danger red delete-producto">Borrar Producto</button>
+        </div>
+    {{else}}
+        <button type="submit" class="btn btn-primary">Guardar Producto</button>
+    {{/if}}
+</template>
+
+<template name="recientesProductos">
+    <h2 class="title text-center">Recientes</h2>
+
+    <div class="list-group">
+        {{#each productosRecientes 7}}
+            <a class="list-group-item">{{name}}</a>
+        {{/each}}
+        <!--
+        <a class="list-group-item">Producto 1 <span class="badge blue">14</span></a>
+        -->
+    </div>
+</template>

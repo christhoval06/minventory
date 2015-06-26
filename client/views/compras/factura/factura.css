@@ -1,0 +1,58 @@
+table.compra-detalle {
+
+}
+
+table.compra-detalle > thead th.producto {
+
+}
+
+table.compra-detalle > thead th.categoria {
+    width: 15% !important;
+    text-align: center;
+}
+
+table.compra-detalle > thead th.precio {
+    width: 12% !important;
+}
+
+table.compra-detalle > thead th.cantidad {
+    width: 12% !important;
+}
+
+table.compra-detalle > thead th.total {
+    width: 15% !important;
+    text-align: center;
+}
+
+table.compra-detalle > thead th.opciones {
+    width: 8% !important;
+}
+
+table.compra-detalle > tbody td.center {
+    vertical-align: middle;
+    text-align: center;
+}
+
+table.compra-detalle > tbody td.right {
+    vertical-align: middle;
+    text-align: right;
+}table.compra-detalle > tbody td.center {
+     vertical-align: middle;
+     text-align: center;
+ }
+
+table.compra-detalle > tbody td.right {
+    vertical-align: middle;
+    text-align: right;
+}
+
+
+.selectize-control.add-producto .selectize-dropdown .caption {
+    font-size: 12px;
+    display: block;
+    opacity: 0.5;
+}
+
+.selectize-control.add-producto .selectize-dropdown .label {
+    color: #000;
+}
