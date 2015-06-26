@@ -1,0 +1,16 @@
+.dashboard span.btn-icon {
+    font-size: 7em;
+}
+
+.dashboard div.panel-body {
+    text-align: center;
+}
+
+.dashboard a.fast-access {
+    text-decoration: none;
+}
+
+.dashboard a.fast-access:hover  div.panel-body {
+    text-decoration: none;
+    color: #ffffff;
+}

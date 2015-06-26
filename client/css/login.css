@@ -1,0 +1,84 @@
+div.account-manager, .wrapper {
+    min-height: 100%;
+}
+
+.account-manager .title {
+    margin-bottom: 55px;
+}
+
+.account-manager div.form-container {
+    background-color: #f2f0ed;
+    padding: 15% 10% 5% 10%;
+    box-shadow: 5px 5px 30px #000;
+}
+
+.account-manager .form-container.signin{
+    margin-top: 20%;
+}
+
+.account-manager .form-container.signup{
+    margin-top: 10%;
+}
+
+
+.account-manager .icono-container {
+    background-color: #807e7d;
+    border: none;
+}
+
+.account-manager .icono {
+    color: #fff;
+}
+
+.account-manager .input, .account-manager button.btn-primary {
+    height: 50px;
+}
+
+.account-manager .input::-webkit-input-placeholder {
+    color: #737170;
+}
+
+.account-manager .input:-moz-placeholder {
+    /* Firefox 18- */
+    color: #737170;
+}
+
+.account-manager .input::-moz-placeholder {
+    /* Firefox 19+ */
+    color: #737170;
+}
+
+.account-manager .input:-ms-input-placeholder {
+    color: #737170;
+}
+
+.account-manager button {
+    background-color: #f25c6e;
+    border-color: #f25c6e;
+}
+
+.account-manager button:hover {
+    background-color: #dd4d5e;
+    border-color: #dd4d5e;
+}
+
+.account-manager button.btn-default {
+    background-color: #f2f0ed;
+    border-color: #f25c6e;
+    color: #f25c6e;
+}
+
+.account-manager button.btn-default:hover {
+    background-color: #f2f0ed;
+    border-color: #dd4d5e;
+    color: #dd4d5e;
+}
+
+.account-manager p.forgot-password {
+    padding: 10px 5px;
+}
+
+.account-manager a#forgot-password:hover {
+    color: #f25c6e;
+    text-decoration: none;
+}

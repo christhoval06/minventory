@@ -1,0 +1,29 @@
+<template name="menu">
+    <div class="collapse navbar-collapse" id="navigation">
+        <ul class="nav navbar-nav">
+            {{#each getMenu}}
+                <li class="dropdown">
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
+                        {{label}} <span class="caret"></span>
+                    </a>
+                    {{#if sub}}
+                        <ul class="dropdown-menu" role="menu">
+                            {{#each menu}}
+                                {{#if item}}
+                                    <li><a class="click-menu" href="#">{{label}}</a></li>
+                                {{/if}}
+                                {{#if divider}}
+                                    <li class="divider"></li>
+                                {{/if}}
+                            {{/each}}
+                        </ul>
+                    {{/if}}
+                </li>
+            {{/each}}
+        </ul>
+
+        <ul class="nav navbar-nav navbar-right">
+            {{> signOut}}
+        </ul>
+    </div>
+</template>
